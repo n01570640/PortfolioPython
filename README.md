@@ -17,4 +17,4 @@ In the **Banking Application**, I developed a terminal-based banking system in P
  - **Error Handling**: Utilized Python's try-except blocks for robust error handling to make the application more fault-tolerant.
 
 This project enhanced my skills in Python programming, data structure manipulation, and implementing user-friendly interfaces. It also provided me with valuable experience in implementing security features and input validation in a banking system.
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------=
+
