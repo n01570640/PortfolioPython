@@ -1,0 +1,44 @@
+
+<!--Inherit from layout template-->
+{% extends "layout.html" %}
+
+
+<!--% Override content block in layout-->
+{% block content %}
+<div class="layout__boxHeader">
+    <div class="layout__boxTitle">
+        <a href="{{request.META.HTTP_REFERER}}">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                viewBox="0 0 32 32">
+                <title>arrow-left</title>
+                <path
+                    d="M13.723 2.286l-13.723 13.714 13.719 13.714 1.616-1.611-10.96-10.96h27.625v-2.286h-27.625l10.965-10.965-1.616-1.607z">
+                </path>
+            </svg>
+        </a>
+        <h3>Back</h3>
+    </div>
+</div>
+<!--Display details of a book-->
+<h1>{{ book.title }}</h1>
+<p>Author: {{ book.author }}</p>
+<p>Year: {{ book.year }}</p>
+<p>Rating: {{ book.rating }}</p>
+<p>Description: {{ book.description }}</p>
+
+<!--Edit link-->
+<div class="d-grid gap-2 d-md-block">
+    <a href="{% url 'update_book' book.id %}" class="btn btn-primary">Edit Book</a>
+    <a href="{% url 'delete_book' book.id %}" class="btn btn-primary">Delete Book</a>
+</div>
+{% if messages %}
+    <div class="alert">
+        {% for message in messages %}
+            <div>
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+{% endblock %}

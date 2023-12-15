@@ -1,0 +1,30 @@
+<!--Inherit from layout template-->
+{% extends "layout.html" %}
+
+<!--% Override content block in layout-->
+{% block content %}
+<div >
+  <div class="card-header">
+    <h1>{{page_title}}</h1>
+  </div>
+  
+
+  <div class="card-body">
+      <!--Creating loop using jinja-->
+      <!--Using movies_array in context dictionary from view-->
+      {% for book in books_array %}
+      <div>
+        <h5 class="card-title">Book {{book.id}}:</h5>
+          <!--Creating a link to book page-->
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><a class="card-text text-danger link-underline-opacity-25 link-underline-opacity-100-hover" href="{% url 'bookdetail' book.id %}">{{book.title}}</a></li>
+          <li class="list-group-item"></li>
+        </ul>
+
+      </div>
+      {% endfor %}
+  </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends 'layout.html' %} 
+
+{% block content %}
+<main class="create-book layout">
+  <div class="container-fluid">
+    <div >
+        <a href="{{request.META.HTTP_REFERER}}">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                viewBox="0 0 32 32">
+                <title>arrow-left</title>
+                <path d="M13.723 2.286l-13.723 13.714 13.719 13.714 1.616-1.611-10.96-10.96h27.625v-2.286h-27.625l10.965-10.965-1.616-1.607z"></path>
+            </svg>
+        </a>
+        <h3>Back</h3>
+        <br/>
+    </div>
+    <div >
+      <h3 style="color: rgb(34, 34, 219);">
+            {% if is_update %}
+                Update Book 
+            {% else %}
+                Create Book
+            {% endif %}
+        </h3>
+        <br/>
+    </div>
+    <div >
+      <form class="row gy-2 gx-3 align-items-center"  style="border: 2px solid black; padding: 20px;" method="POST">
+        {% csrf_token %}
+  
+        <!-- Display form element generated from MovieForm-->
+        <div class="col-auto">
+          <label for="book_title" class="form-label">Book Title</label>
+          <div class="col-sm-10">
+            {{form.title}}
+          </div>
+        </div>
+  
+        
+        <div class="col-auto">
+          <label for="book_author" class="form-label">Book Author</label>
+          <div class="col-sm-10">
+            {{form.author}}
+          </div>
+          
+        </div>
+  
+        <div class="col-auto">
+          <label for="book_year" class="form-label">Book Year</label>
+          <div class="col-sm-10">
+            {{form.year}}
+          </div>
+          
+        </div>
+  
+        <div class="col-auto">
+          <label for="book_rating" class="form-label">Book Rating</label>
+          <div class="col-sm-10">
+            {{form.rating}}
+          </div>
+          
+        </div>
+  
+        <div class="col-auto">
+          <label for="book_description" class="form-label">Book Description</label>
+          <div class="col-sm-10">
+            {{form.description}}
+          </div>
+          
+        </div>
+        <!-- Display errors for each field -->
+        {% if field.errors %}
+          {% for error in field.errors %}
+              <div class="error">{{ error }}</div>
+          {% endfor %}
+        {% endif %}
+        <div class="col-12 my-4 ">
+          <button class="btn btn-primary btn-lg" type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+</main>
+{% endblock content %}
